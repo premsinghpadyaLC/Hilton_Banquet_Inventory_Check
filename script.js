@@ -50,7 +50,7 @@ function loadMonth() {
   document.getElementById("monthSelect").value = key;
   const saved = JSON.parse(localStorage.getItem(key)) || {};
 
-  document.getElementById("managerName").value = saved.manager || "";
+  document.getElementById("managerName").value = "Mr. Lokesh Swami";
   document.getElementById("reportedBy").value = saved.reportedBy || "";
   document.getElementById("signature").value = saved.signature || "";
   document.getElementById("datetime").innerText = cur.toLocaleDateString();
@@ -77,7 +77,7 @@ function nameOf(id) {
 function saveCurrent() {
   const key = keyFor(cur);
   const data = {
-    manager: nameOf("managerName"),
+    manager: "Mr. Lokesh Swami",
     reportedBy: nameOf("reportedBy"),
     signature: nameOf("signature"),
     inventory: []
