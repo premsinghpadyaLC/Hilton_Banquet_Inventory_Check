@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Hilton Garden Inn Banquet Inventory</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Hilton Garden Inn Logo" id="logo"/>
+    <h1>Ottawa Airport – Banquet Inventory</h1>
+  </header>
+
+  <section class="controls">
+    <button onclick="prevMonth()">‹ Prev</button>
+    <select id="monthSelect" onchange="loadMonth()"></select>
+    <button onclick="nextMonth()">Next ›</button>
+  </section>
+
+  <section class="info-section">
+    <label>Banquet Manager: <input type="text" id="managerName"/></label>
+    <label>Reported By: <input type="text" id="reportedBy"/></label>
+    <label>Signature: <input type="text" id="signature"/></label>
+    <p>Date: <span id="datetime"></span></p>
+  </section>
+
+  <main>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Qty</th><th>Notes</th><th>Photo</th></tr>
+      </thead>
+      <tbody id="inventoryTable"></tbody>
+    </table>
+    <div class="buttons">
+      <button onclick="saveCurrent()">Save Month</button>
+      <button onclick="generatePDFAll()">Download Multi‑Month PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Hilton Garden Inn Banquet Department</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
