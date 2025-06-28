@@ -1,0 +1,198 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f7f9fc;
+  color: #333;
+  padding: 15px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Header with logo */
+header {
+  text-align: center;
+  background-color: #003366;
+  color: white;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#logo {
+  max-height: 60px;
+  margin-bottom: 10px;
+}
+
+/* Controls section */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.controls button,
+.controls select {
+  padding: 8px 14px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background-color: #003366;
+  color: #fff;
+}
+
+/* Info section */
+.info-section {
+  background-color: #e6eef8;
+  padding: 20px;
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.info-section label {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+}
+
+.info-section input {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+thead {
+  background-color: #dbeaff;
+}
+
+th, td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+tr:hover {
+  background-color: #f1f7ff;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  padding: 6px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+}
+
+img {
+  max-width: 70px;
+  margin-top: 5px;
+  border-radius: 4px;
+}
+
+/* Buttons Section */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.buttons button {
+  padding: 12px 18px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #00509e;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+  background-color: #003f7f;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 30px;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    padding: 10px;
+  }
+
+  td {
+    padding-left: 50%;
+    position: relative;
+    font-size: 0.95rem;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  td::before {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #003366;
+  }
+
+  td:nth-of-type(1)::before { content: "Item"; }
+  td:nth-of-type(2)::before { content: "Quantity"; }
+  td:nth-of-type(3)::before { content: "Notes"; }
+  td:nth-of-type(4)::before { content: "Photo"; }
+}
