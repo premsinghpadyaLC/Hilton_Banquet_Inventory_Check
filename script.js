@@ -1,6 +1,6 @@
 const items = [
   "Dinner Forks",
-  "Small Forks", 
+  "Small Forks",
   "Dinner Knives",
   "Small Knives",
   "Soup Spoons",
@@ -48,11 +48,11 @@ function nextMonth() {
 function loadMonth() {
   const key = keyFor(cur);
   document.getElementById("monthSelect").value = key;
-  const saved = JSON.parse(localStorage.getItem(key)) || {};
 
+  // Clear all inputs except Manager (which is always "Mr. Lokesh Swami")
   document.getElementById("managerName").value = "Mr. Lokesh Swami";
-  document.getElementById("reportedBy").value = saved.reportedBy || "";
-  document.getElementById("signature").value = saved.signature || "";
+  document.getElementById("reportedBy").value = "";
+  document.getElementById("signature").value = "";
   document.getElementById("datetime").innerText = cur.toLocaleDateString();
 
   const tbody = document.getElementById("inventoryTable");
@@ -60,11 +60,10 @@ function loadMonth() {
 
   items.forEach((it, i) => {
     const row = document.createElement("tr");
-    const dat = saved.inventory?.[i] || {};
     row.innerHTML = `
       <td>${it}</td>
-      <td><input type="number" id="q-${i}" value="${dat.qty || 0}" /></td>
-      <td><input type="text" id="n-${i}" value="${dat.notes || ""}" /></td>
+      <td><input type="number" id="q-${i}" value="0" min="0" /></td>
+      <td><input type="text" id="n-${i}" value="" /></td>
     `;
     tbody.appendChild(row);
   });
@@ -91,16 +90,22 @@ function saveCurrent() {
   });
 
   localStorage.setItem(key, JSON.stringify(data));
-  alert("Saved for " + key);
+  alert("Inventory saved for " + key);
 }
 
 async function generatePDFAll() {
-  const { jsPDF } = window.jspdf;
+  const jsPDF = window.jspdf.jsPDF;
+
   const doc = new jsPDF({ unit: "pt", format: "a4", compress: true });
 
   const months = Array.from(document.getElementById("monthSelect").options)
     .filter((o) => localStorage.getItem(o.value))
     .sort((a, b) => (a.value > b.value ? 1 : -1));
+
+  if (months.length === 0) {
+    alert("No saved inventory data found to generate PDF.");
+    return;
+  }
 
   for (let idx = 0; idx < months.length; idx++) {
     const opt = months[idx];
